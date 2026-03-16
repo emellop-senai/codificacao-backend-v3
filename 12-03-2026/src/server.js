@@ -11,17 +11,6 @@ let alunos = [
 app.get('/', (req, res) => {
     res.send('Vanessa Schuster')
 })
-
-/*app.get('/alunos/getAll', (req, res) => {
-    res.json({
-        sucess: true,
-        data: alunos
-    })
-
-})*/
-
-//GET - buscar aluno by id
-
 app.get('/alunos/:id', (req, res) => {
     const id = parseInt(req.params.id)
     const aluno = alunos.find(a => a.id === id)
@@ -38,6 +27,37 @@ app.get('/alunos/:id', (req, res) => {
     })
 })
 
+app.get('/alunos/getAll', (req, res) => {
+    res.json({
+        sucess: true,
+        data: alunos
+    })
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
+})
+
+//POST - criar novo aluno
+
+app.post('/alunos', (req, res) => {
+    const { nome, idade } = req.body
+    if (!nome || !idade){
+        return res.status(400).json({
+            success: false,
+            message: 'nome e idade são obrigatorios'
+        })
+    }
+    const novoAluno = {
+        id: alunos.legth + 1,
+        nome,
+        idade
+    }
+    aluno.push(novoAluno)
+    res.status(201).json({
+        sucess: true,
+        data: novoAluno,
+        message: 'certo'
+    })
+
 })
