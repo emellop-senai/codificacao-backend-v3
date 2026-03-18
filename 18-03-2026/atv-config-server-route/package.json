@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "scripts": {
+    "pietra": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
