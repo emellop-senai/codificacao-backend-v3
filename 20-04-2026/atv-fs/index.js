@@ -9,7 +9,7 @@ async function readFruits() {
 }
 
 // Mozile mdn
-async function writeFruits(params) {
+async function writeFruits(fruits) {
     const data = JSON.stringify(fruits, null, 2)
     await fs.writeFile("./fruits.json", data, "utf-8")
 
